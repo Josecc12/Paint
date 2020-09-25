@@ -22,7 +22,7 @@ void Paint::PaintLoop()
 		Event event;
 		while (window->pollEvent(event))
 		{
-			switch (event.type)
+			switch (event.type)//
 			{
 			case Event::Closed:
 				window->close();
