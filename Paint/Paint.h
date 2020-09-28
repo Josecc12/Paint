@@ -14,5 +14,9 @@ public:
 private:
 	int fps;
 	RenderWindow * window;
+	CircleShape pen;
+	RectangleShape colors[20];
+	
+	
 };
 
