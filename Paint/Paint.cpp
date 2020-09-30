@@ -72,6 +72,7 @@ void Paint::ProcessEvent()
 		case Event::MouseButtonPressed:
 
 			if (Mouse::isButtonPressed(Mouse::Left))
+
 			{
 				ProcessCollsion();
 				//Opcion para dibujar punto por punto
