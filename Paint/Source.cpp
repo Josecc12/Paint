@@ -10,5 +10,6 @@ int main()
 {
 	Paint* paint1;
 	paint1 = new Paint(800,600);
+	
 	return 0;
 }
