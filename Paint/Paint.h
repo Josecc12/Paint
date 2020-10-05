@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <SFML/Window/Event.hpp>
+#include <SFML/Graphics/Color.hpp>
 using namespace sf;
 using namespace std;
 class Paint
@@ -12,16 +13,34 @@ public:
 	void PaintLoop();
 	void ProcessEvent();
 	void ProcessMouse();
-	void ProcessCollsion();
+	void ProcessCollision();
+	void FillCollision();
+	void SelectorCollision();
 
-private:
+private:	
 	int fps;
-	RenderWindow * window;
+	bool pen_tool;
+	bool fill_tool;
+	bool eraser_tool;
+	bool selector_tool;
+	RenderWindow* window;
 	CircleShape pen;
+	CircleShape prueba;
 	RectangleShape colors[20];
-	Texture fill_texture;
-	Sprite fill_sprite;
+	Texture *fill_texture;
+	Texture *eraser_texture;
+	Texture* pen_texture;
+	Texture* selector_texture;
+	Sprite *fill_sprite;
+	Sprite *eraser_sprite;
+	Sprite *pen_sprite;
+	Sprite* selector_sprite;
 	Event *event1;
 	Vector2i position_mouse;
+	Clock *reloj;
+	Clock* reloj2;
+	Time* tiempo;
+	Time* tiempo2;
+	Color color_selected;
 };
 
