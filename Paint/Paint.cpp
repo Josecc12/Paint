@@ -3,89 +3,148 @@ Paint::Paint(int x, int y)
 {
 	
 	this->fps = 60; 
-	this->pen_tool = false;
-	this->fill_tool = false;
-	this->eraser_tool = false;
-	this->selector_tool = false;
-	this->poligon_tool = false;
-	window = new RenderWindow(VideoMode(x,y),"PAINT");
-	window->setFramerateLimit(this->fps);
-	this->pen = CircleShape(45, 360);
-	this->prueba = CircleShape(45,4);
-	this->prueba.setPosition(45, 80);
-	this->event1 = new Event;
-	this->fill_texture = new Texture;
-	this->eraser_texture = new Texture;
-	this->pen_texture = new Texture;
-	this->selector_texture = new Texture;
-	this->poligon_texture = new Texture;
-	this->fill_sprite = new Sprite;
-	this->eraser_sprite = new Sprite;
-	this->pen_sprite = new Sprite;
-	this->selector_sprite = new Sprite;
-	this->poligon_sprite = new Sprite;
+	this->poligono_counter=0;
+	this->pen_counter = 0;
+	this->pen_radius=15;
 	this->reloj = new Clock;
 	this->reloj2 = new Clock;
 	this->tiempo = new Time;
 	this->tiempo2 = new Time;
 	this->color_selected = Color::White;
+	window = new RenderWindow(VideoMode(x, y), "PAINT");
+	window->setFramerateLimit(this->fps);
+	this->event1 = new Event;
+
+	//TOOLS
+	this->pen_tool = false;
+	this->fill_tool = false;
+	this->eraser_tool = false;
+	this->selector_tool = false;
+	this->poligon_tool = false;
+	this->rectangle_tool = false;
+	this->line_tool = false;
+	this->circle_tool = false;
+	this->triangle_tool = false;
+
+	
+	
+	//CREATE TEXTURES
+	this->fill_texture = new Texture;
+	this->eraser_texture = new Texture;
+	this->pen_texture = new Texture;
+	this->selector_texture = new Texture;
+	this->poligon_texture = new Texture;
+	this->rectangle_texture = new Texture;
+	this->line_texture = new Texture;
+	this->circle_texture = new Texture;
+	this->triangle_texture = new Texture;
+
+
+	//CREATE SPRITES
+	this->fill_sprite = new Sprite;
+	this->eraser_sprite = new Sprite;
+	this->pen_sprite = new Sprite;
+	this->selector_sprite = new Sprite;
+	this->poligon_sprite = new Sprite;
+	this->rectangle_sprite = new Sprite;
+	this->line_sprite = new Sprite;
+	this->circle_sprite = new Sprite;
+	this->triangle_sprite = new Sprite;
+	
+
+
+	//LOAD FILES
 	fill_texture->loadFromFile("../res/Fill.png");
 	eraser_texture->loadFromFile("../res/Eraser.png");
 	pen_texture->loadFromFile("../res/Pen.png");
 	selector_texture->loadFromFile("../res/Selection.png");
 	poligon_texture->loadFromFile("../res/Poligon.png");
+	rectangle_texture->loadFromFile("../res/Rectangle.png");
+	line_texture->loadFromFile("../res/Line.png");
+	circle_texture->loadFromFile("../res/Circle.png");
+	triangle_texture->loadFromFile("../res/Triangle.png");
+
+	//TEXTURES & SPRITES
 	fill_sprite->setTexture(*fill_texture);
 	eraser_sprite->setTexture(*eraser_texture);
 	pen_sprite->setTexture(*pen_texture);
 	selector_sprite->setTexture(*selector_texture);
 	poligon_sprite->setTexture(*poligon_texture);
-	fill_sprite->setPosition(420, 0);
-	eraser_sprite->setPosition(490, 0);
-	pen_sprite->setPosition(560, 0);
-	selector_sprite->setPosition(630, 0);
-	poligon_sprite->setPosition(700, 0);
+	rectangle_sprite->setTexture(*rectangle_texture);
+	line_sprite->setTexture(*line_texture);
+	circle_sprite->setTexture(*circle_texture);
+	triangle_sprite->setTexture(*triangle_texture);
+
+	//POSITIONS SPRITES
+	fill_sprite->setPosition(70, 0);
+	eraser_sprite->setPosition(140, 0);
+	pen_sprite->setPosition(210, 0);
+	selector_sprite->setPosition(280, 0);
+	poligon_sprite->setPosition(350, 0);
+	rectangle_sprite->setPosition(420, 0);
+	line_sprite->setPosition(490, 0);
+	circle_sprite->setPosition(560, 0);
+	triangle_sprite->setPosition(630, 0);
+
+	//SPRITES SACALE
 	fill_sprite->setScale(70.f / fill_sprite->getTexture()->getSize().x, 70.f / fill_sprite->getTexture()->getSize().y);
 	eraser_sprite->setScale(70.f / eraser_sprite->getTexture()->getSize().x, 70.f / eraser_sprite->getTexture()->getSize().x);
 	pen_sprite->setScale(70.f / pen_sprite->getTexture()->getSize().x, 70.f / pen_sprite->getTexture()->getSize().y);
 	selector_sprite->setScale(70.f / selector_sprite->getTexture()->getSize().x, 70.f / selector_sprite->getTexture()->getSize().y);
 	poligon_sprite->setScale(70.f / poligon_sprite->getTexture()->getSize().x, 70.f / poligon_sprite->getTexture()->getSize().y);
-
+	rectangle_sprite->setScale(70.f / rectangle_sprite->getTexture()->getSize().x, 70.f / rectangle_sprite->getTexture()->getSize().y);
+	line_sprite->setScale(70.f / line_sprite->getTexture()->getSize().x, 70.f / line_sprite->getTexture()->getSize().y);
+	circle_sprite->setScale(70.f / circle_sprite->getTexture()->getSize().x, 70.f / circle_sprite->getTexture()->getSize().y);
+	triangle_sprite->setScale(70.f / triangle_sprite->getTexture()->getSize().x, 70.f / triangle_sprite->getTexture()->getSize().y);
 	
-	//colores
+	//COLORS
 	for (int i = 0; i < 20; i++)
 	{
 		this->colors[i] = RectangleShape();
 		this->colors[i].setSize(Vector2f(70, 70));
 	}
-
 	this->colors[0].setFillColor(Color::Red);
 	this->colors[1].setFillColor(Color::Blue);
 	this->colors[2].setFillColor(Color::Green);
 	this->colors[3].setFillColor(Color::Cyan);
 	this->colors[4].setFillColor(Color::Yellow);
 	this->colors[5].setFillColor(Color::White);
-
 	for (int i = 0; i < 6; i++)
 	{
-		this->colors[i].setPosition(70 * i, 0);
+		this->colors[i].setPosition(0,70 * i);
 	}
-	this->poligono = Poligono();
+
+	//TOOL ARRAYS
+	for (int i = 0; i < 10; i++)
+	{
+		this->poligonos[i] = Poligono();
+	}
+	for (int i = 0; i < 1000; i++)
+	{
+		this->pen[i] = CircleShape(45, 360);
+		this->pen[i].setOrigin(0, 0);
+		this->pen[i].setFillColor(Color::Black);
+		this->pen[i].setRadius(1);
+	}
+
 	PaintLoop();
 }
 
 void Paint::Draw()
 {
-	if (selector_tool == true)
-	{
-		window->clear();
-	}
 	
-	if (pen_tool == true)
+	for (int i = 0; i < 10; i++)
 	{
-		window->draw(pen);
+		if (poligonos[i].GetHiden() == false)
+		{
+			window->draw(poligonos[i].GetPoligono());
+		}
 	}
+	for (int i = 0; i < 1000; i++)
+	{
+		window->draw(pen[i]);
 
-	
+	}
 	for (int i = 0; i < 6; i++)	
 	{
 		window->draw(colors[i]);
@@ -95,8 +154,10 @@ void Paint::Draw()
 	window->draw(*pen_sprite);
 	window->draw(*eraser_sprite);
 	window->draw(*selector_sprite);
-	window->draw(prueba);
-	
+	window->draw(*rectangle_sprite);
+	window->draw(*line_sprite);
+	window->draw(*circle_sprite);
+	window->draw(*triangle_sprite);
 	window->display();
 	
 }
@@ -113,6 +174,7 @@ void Paint::PaintLoop()
 			Draw();
 			reloj->restart();
 		}
+		window->clear();
 	}
 }
 
@@ -132,19 +194,32 @@ void Paint::ProcessEvent()
 			if (Mouse::isButtonPressed(Mouse::Left))
 			{
 				ProcessCollision();
-				//Opcion para dibujar punto por punto
-				if (fill_tool == true)
-				{
-					if (Mouse::isButtonPressed(Mouse::Left))
-					{
-						FillCollision();
-						window->draw(pen);
-					}
-				}
+				ColorCollision();
+				
 				if (poligon_tool == true)
 				{
-					poligono.SetStartPoint(position_mouse.x, position_mouse.y);
-					cout << position_mouse.x << "," << position_mouse.y << endl;
+					poligonos[poligono_counter].SetStartPoint(position_mouse.x, position_mouse.y);
+					
+				}
+				if (rectangle_tool == true)
+				{
+
+				}
+				if (line_tool == true)
+				{
+
+				}
+				if (circle_tool == true)
+				{
+
+				}
+				if (triangle_tool == true)
+				{
+
+				}
+				if (fill_tool==true)
+				{
+					FillCollision();
 				}
 			}
 			break;
@@ -154,9 +229,30 @@ void Paint::ProcessEvent()
 			{
 				if (poligon_tool == true)
 				{
-					poligono.SetEndPoint(position_mouse.x, position_mouse.y);
-					cout << position_mouse.x << "," << position_mouse.y << endl;
-					window->draw(poligono.GetPoligono());
+					poligonos[poligono_counter].ModColor(color_selected);
+					poligonos[poligono_counter].SetEndPoint(position_mouse.x, position_mouse.y);
+					poligonos[poligono_counter].SetHiden();
+					poligono_counter++;
+					if (poligono_counter==10)
+					{
+						poligono_counter = 0;
+					}	
+				}
+				if (rectangle_tool == true)
+				{
+
+				}
+				if (line_tool == true)
+				{
+
+				}
+				if (circle_tool == true)
+				{
+
+				}
+				if (triangle_tool == true)
+				{
+
 				}
 			}
 
@@ -167,21 +263,26 @@ void Paint::ProcessEvent()
 			{
 				if (eraser_tool == true)
 				{
-					pen.setFillColor(color_selected);
-					pen.setPosition(Vector2f(position_mouse));
-					window->draw(pen);
+					pen[pen_counter].setRadius(pen_radius);
+					pen[pen_counter].setPosition(Vector2f(position_mouse));
+					pen[pen_counter].setFillColor(Color::Black);
+					pen_counter++;
+					if (pen_counter==1000)
+					{
+						pen_counter = 0;
+					}
 				}
 
 				if (pen_tool == true)
 				{
-					pen.setFillColor(color_selected);
-					*tiempo2 = reloj2->getElapsedTime();
-						if (tiempo2->asSeconds() > 1 / fps)
-						{
-							pen.setPosition(Vector2f(position_mouse));
-							
-							*tiempo2 = reloj2->restart();
-						}
+					pen[pen_counter].setRadius(pen_radius);
+					pen[pen_counter].setPosition(Vector2f(position_mouse));
+					pen[pen_counter].setFillColor(color_selected);
+					pen_counter++;
+					if (pen_counter == 1000)
+					{
+						pen_counter = 0;
+					}
 				}
 
 				if (selector_tool == true)
@@ -219,6 +320,10 @@ void Paint::ProcessCollision()
 		eraser_tool = false;
 		selector_tool = false;
 		poligon_tool = false;
+		rectangle_tool = false;
+		line_tool = false;
+		circle_tool = false;
+		triangle_tool = false;
 	}
 	if (fill_sprite->getGlobalBounds().intersects(boxmouse))
 	{
@@ -227,7 +332,11 @@ void Paint::ProcessCollision()
 		eraser_tool = false;
 		selector_tool = false;
 		poligon_tool = false;
-		cout << "Fill tool" << endl;
+		rectangle_tool = false;
+		line_tool = false;
+		circle_tool = false;
+		triangle_tool = false;
+		
 	}
 	if (eraser_sprite->getGlobalBounds().intersects(boxmouse))
 	{
@@ -236,7 +345,11 @@ void Paint::ProcessCollision()
 		eraser_tool = true;
 		selector_tool = false;
 		poligon_tool = false;
-		color_selected = Color::Black;
+		rectangle_tool = false;
+		line_tool = false;
+		circle_tool = false;
+		triangle_tool = false;
+
 	}
 	if (selector_sprite->getGlobalBounds().intersects(boxmouse))
 	{
@@ -245,7 +358,10 @@ void Paint::ProcessCollision()
 		eraser_tool = false;
 		selector_tool = true;
 		poligon_tool = false;
-		cout << "Selector" << endl;
+		rectangle_tool = false;
+		line_tool = false;
+		circle_tool = false;
+		triangle_tool = false;
 	}
 	if (poligon_sprite->getGlobalBounds().intersects(boxmouse))
 	{
@@ -254,7 +370,64 @@ void Paint::ProcessCollision()
 		eraser_tool = false;
 		selector_tool = false;
 		poligon_tool = true;
+		rectangle_tool = false;
+		line_tool = false;
+		circle_tool = false;
+		triangle_tool = false;
 	}
+	if (rectangle_sprite->getGlobalBounds().intersects(boxmouse))
+	{
+		pen_tool = false;
+		fill_tool = false;
+		eraser_tool = false;
+		selector_tool = false;
+		poligon_tool = false;
+		rectangle_tool = true;
+		line_tool = false;
+		circle_tool = false;
+		triangle_tool = false;
+	}
+	if (line_sprite->getGlobalBounds().intersects(boxmouse))
+	{
+		pen_tool = false;
+		fill_tool = false;
+		eraser_tool = false;
+		selector_tool = false;
+		poligon_tool = false;
+		rectangle_tool = false;
+		line_tool = true;
+		circle_tool = false;
+		triangle_tool = false;
+	}
+	if (circle_sprite->getGlobalBounds().intersects(boxmouse))
+	{
+		pen_tool = false;
+		fill_tool = false;
+		eraser_tool = false;
+		selector_tool = false;
+		poligon_tool = false;
+		rectangle_tool = false;
+		line_tool = false;
+		circle_tool = true;
+		triangle_tool = false;
+	}
+	if (triangle_sprite->getGlobalBounds().intersects(boxmouse))
+	{
+		pen_tool = false;
+		fill_tool = false;
+		eraser_tool = false;
+		selector_tool = false;
+		poligon_tool = false;
+		rectangle_tool = false;
+		line_tool = false;
+		circle_tool = false;
+		triangle_tool = true;
+	}
+}
+
+void Paint::ColorCollision()
+{
+	FloatRect boxmouse(Vector2f(position_mouse), { 10,10 });
 	if (colors[0].getGlobalBounds().intersects(boxmouse))
 	{
 		color_selected = Color::Red;
@@ -281,26 +454,29 @@ void Paint::ProcessCollision()
 	}
 }
 
+
 void Paint::FillCollision()
 {
 	FloatRect boxmouse(Vector2f(position_mouse), { 10,10 });
-	if (pen.getGlobalBounds().intersects(boxmouse))
+	for (int i = 0; i < 10; i++)
 	{
-		cout << "fill" << endl;
-		pen.setFillColor(color_selected);
-		pen.setFillColor(color_selected);
+		if (poligonos[i].GetPoligono().getGlobalBounds().intersects(boxmouse))
+		{
+			poligonos[i].ModColor(color_selected);
+		}
 	}
 }
+
 
 void Paint::SelectorCollision()
 {
 	FloatRect boxmouse(Vector2f(position_mouse), { 10,10 });
-	
-		if (prueba.getGlobalBounds().intersects(boxmouse))
+		for (int i = 0; i < 10; i++)
 		{
-			prueba.setPosition(Vector2f(position_mouse));
-			cout << "Moviendose" << endl;
-		
+			if (poligonos[i].GetPoligono().getGlobalBounds().intersects(boxmouse))
+			{
+				poligonos[i].ModPosition(position_mouse.x, position_mouse.y);
+			}
 		}
 		
 }
