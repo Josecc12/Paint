@@ -19,5 +19,5 @@ Vertex Linea::GetLinea() {
 	Vertex line[] = {
 		Vertex(this->vector1, this->vector2)
 	};
-	return draw(line, 2, Lines);
+	//return draw(line, 2, Lines);
 }
