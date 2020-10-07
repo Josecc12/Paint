@@ -15,9 +15,9 @@ void Linea::SetEndPoint(int x, int y) {
 	cout << "Coordenada 2" << endl;
 }
 
-Vertex Linea::GetLinea() {
+/*Vertex Linea::GetLinea() {
 	Vertex line[] = {
 		Vertex(this->vector1, this->vector2)
 	};
 	//return draw(line, 2, Lines);
-}
+}*/

@@ -144,12 +144,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Circulo.cpp" />
     <ClCompile Include="Linea.cpp" />
     <ClCompile Include="Paint.cpp" />
     <ClCompile Include="Poligono.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Circulo.h" />
     <ClInclude Include="Linea.h" />
     <ClInclude Include="Paint.h" />
     <ClInclude Include="Poligono.h" />
