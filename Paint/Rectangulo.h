@@ -1,17 +1,28 @@
 #pragma once
+#include<iostream>
 #include <SFML/Graphics.hpp>
-#include <iostream>
-#include <SFML/Window/Event.hpp>
-using namespace sf;
+#include <SFML/Graphics/RectangleShape.hpp>
+#include <math.h>
 using namespace std;
+using namespace sf;
 class Rectangulo
 {
 public:
 	Rectangulo();
-	
-private:
-	RectangleShape* figurarectangulo;
-	Texture* figurarectangul;
-	Sprite* rectangul;
-};
+	void SetStartPoint(int x, int y);
+	void SetEndPoint(int x, int y);
+	void ModPosition(int x, int y);
+	void ModColor(Color a);
+	float GetHeight();
+	float GetWidth();
+	RectangleShape GetRectangulo();
 
+
+private:
+	int x1, x2 ;
+	int y1, y2;
+	bool rectangulo ;
+	RectangleShape rectangulo;
+
+
+};
