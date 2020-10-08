@@ -5,6 +5,7 @@
 #include <SFML/Graphics/Color.hpp>
 #include <string>
 #include "Poligono.h"
+#include "Circulo.h"
 using namespace sf;
 using namespace std;
 class Paint
@@ -24,6 +25,7 @@ private:
 	int fps;
 	int pen_radius;
 	int poligono_counter;
+	int circulo_counter;
 	int pen_counter;
 	bool pen_tool;
 	bool fill_tool;
@@ -69,5 +71,6 @@ private:
 	Poligono poligonos[10];
 	RectangleShape colors[20];
 	CircleShape pen[1000];
+	Circulo circulos[10];
 };
 
