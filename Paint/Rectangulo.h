@@ -12,6 +12,8 @@ public:
 	void SetStartPoint(int x, int y);
 	void SetEndPoint(int x, int y);
 	void ModPosition(int x, int y);
+	void SetHiden();
+	bool GetHiden();
 	void ModColor(Color a);
 	float GetHeight();
 	float GetWidth();
@@ -21,7 +23,7 @@ public:
 private:
 	int x1, x2 ;
 	int y1, y2;
-	bool rectangulo ;
+	bool hiden ;
 	RectangleShape rectangulo;
 
 
