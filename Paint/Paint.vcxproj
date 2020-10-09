@@ -148,7 +148,6 @@
     <ClCompile Include="Linea.cpp" />
     <ClCompile Include="Paint.cpp" />
     <ClCompile Include="Poligono.cpp" />
-    <ClCompile Include="Rectangulo.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +155,6 @@
     <ClInclude Include="Linea.h" />
     <ClInclude Include="Paint.h" />
     <ClInclude Include="Poligono.h" />
-    <ClInclude Include="Rectangulo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

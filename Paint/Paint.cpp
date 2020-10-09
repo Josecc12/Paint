@@ -258,7 +258,7 @@ void Paint::ProcessEvent()
 				}
 				if (line_tool == true)
 				{
-					//lineas[linea_counter].ModColor(color_selected);
+					lineas[linea_counter].ModColor(color_selected);
 					lineas[linea_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					lineas[linea_counter].SetHiden();
 					linea_counter++;
@@ -513,7 +513,7 @@ void Paint::SelectorCollision()
 			if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse)) {
 				circulos[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
-			/*if (lineas[i].GetLinea().getGlobalBounds().intersects(boxmouse)) {
+			/*if (lineas[i]..getGlobalBounds().intersects(boxmouse)) {
 				lineas[i].ModPosition(position_mouse.x, position_mouse.y);
 			}*/
 		}

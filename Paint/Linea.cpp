@@ -6,7 +6,8 @@ Linea::Linea() {
 	this->y1 = 0;
 	this->y2 = 0;
 	this->hiden = true;
-	this->linea[2] = { Vertex(Vector2f(x1, y1), Vector2f(x2, y2)) };
+	this->linea[0] = Vertex(Vector2f( 120, 120));
+	this->linea[1] = Vertex(Vector2f( 240, 240));
 }
 
 void Linea::SetStartPoint(int x, int y) {
@@ -23,16 +24,17 @@ void Linea::SetHiden() {
 	this->hiden = false;
 }
 
-/*void Linea::ModColor(Color a)
+void Linea::ModColor(Color a)
 {
-	linea.color(a);
+	linea[0].color = a;
+	linea[1].color = a;
 }
 
 void Linea::ModPosition(int x, int y)
 {
-	linea.setPosition(x, y);
+	linea[0].position = Vector2f(x, y);
 }
-*/
+
 int Linea::GetDistance()
 {
 	int distancia = 0;
