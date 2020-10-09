@@ -9,13 +9,20 @@ using namespace sf;
 class Linea
 {
 private:
-	Vector2f vector1;
-	Vector2f vector2;
+	int x1, x2;
+	int y1, y2;
+	bool hiden;
+	Vertex linea [];
 
 public:
 	Linea();
 	void SetStartPoint(int x, int y);
 	void SetEndPoint(int x, int y);
+	void SetHiden();
+	void ModColor(Color a);
+	int GetDistance();
+	bool GetHiden();
+	void ModPosition(int x, int y);
 	Vertex GetLinea();
 };
 

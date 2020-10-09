@@ -5,6 +5,7 @@ Paint::Paint(int x, int y)
 	this->fps = 60; 
 	this->poligono_counter=0;
 	this->circulo_counter = 0;
+	this->linea_counter = 0;
 	this->pen_counter = 0;
 	this->pen_radius=15;
 	this->reloj = new Clock;
@@ -129,6 +130,7 @@ Paint::Paint(int x, int y)
 	}
 	for (int i = 0; i < 10; i++) {
 		this->circulos[i] = Circulo();
+		this->lineas[i] = Linea();
 	}
 
 	PaintLoop();
@@ -146,6 +148,9 @@ void Paint::Draw()
 	}
 	for (int i = 0; i < 10; i++) {
 		if (circulos[i].GetHiden() == false) {
+			window->draw(circulos[i].GetCirculo());
+		}
+		if (lineas[i].GetHiden() == false) {
 			window->draw(circulos[i].GetCirculo());
 		}
 	}
@@ -216,7 +221,7 @@ void Paint::ProcessEvent()
 				}
 				if (line_tool == true)
 				{
-
+					lineas[linea_counter].SetStartPoint(position_mouse.x, position_mouse.y);
 				}
 				if (circle_tool == true)
 				{
@@ -253,7 +258,13 @@ void Paint::ProcessEvent()
 				}
 				if (line_tool == true)
 				{
-
+					//lineas[linea_counter].ModColor(color_selected);
+					lineas[linea_counter].SetEndPoint(position_mouse.x, position_mouse.y);
+					lineas[linea_counter].SetHiden();
+					linea_counter++;
+					if (linea_counter == 10) {
+						linea_counter = 0;
+					}
 				}
 				if (circle_tool == true)
 				{
@@ -502,5 +513,8 @@ void Paint::SelectorCollision()
 			if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse)) {
 				circulos[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
+			/*if (lineas[i].GetLinea().getGlobalBounds().intersects(boxmouse)) {
+				lineas[i].ModPosition(position_mouse.x, position_mouse.y);
+			}*/
 		}
 }

@@ -6,6 +6,7 @@
 #include <string>
 #include "Poligono.h"
 #include "Circulo.h"
+#include "Linea.h"
 using namespace sf;
 using namespace std;
 class Paint
@@ -26,6 +27,7 @@ private:
 	int pen_radius;
 	int poligono_counter;
 	int circulo_counter;
+	int linea_counter;
 	int pen_counter;
 	bool pen_tool;
 	bool fill_tool;
@@ -72,5 +74,6 @@ private:
 	RectangleShape colors[20];
 	CircleShape pen[1000];
 	Circulo circulos[10];
+	Linea lineas[10];
 };
 
