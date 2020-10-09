@@ -44,8 +44,3 @@ bool Linea::GetHiden()
 {
 	return this->hiden;
 }
-
-Vertex Linea::GetLinea() {
-
-	return (this->linea, 2, Lines);
-}

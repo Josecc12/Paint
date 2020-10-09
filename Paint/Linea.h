@@ -12,7 +12,6 @@ private:
 	int x1, x2;
 	int y1, y2;
 	bool hiden;
-	Vertex linea [];
 
 public:
 	Linea();
@@ -23,6 +22,6 @@ public:
 	int GetDistance();
 	bool GetHiden();
 	void ModPosition(int x, int y);
-	Vertex GetLinea();
+	Vertex linea[2];
 };
 

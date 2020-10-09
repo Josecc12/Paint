@@ -151,7 +151,7 @@ void Paint::Draw()
 			window->draw(circulos[i].GetCirculo());
 		}
 		if (lineas[i].GetHiden() == false) {
-			window->draw(circulos[i].GetCirculo());
+			window->draw(lineas[i].linea, 2, Lines);
 		}
 	}
 	for (int i = 0; i < 1000; i++)
