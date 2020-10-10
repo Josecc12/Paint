@@ -6,7 +6,7 @@ Linea::Linea() {
 	this->y1 = 0;
 	this->y2 = 0;
 	this->hiden = true;
-	this->linea[0] = Vertex(Vector2f( 120, 120));
+	this->linea[0] = Vertex(Vector2f( this->x1, this->y2));
 	this->linea[1] = Vertex(Vector2f( this->x2, this->y2));
 }
 

@@ -74,6 +74,6 @@ private:
 	RectangleShape colors[20];
 	CircleShape pen[1000];
 	Circulo circulos[10];
-	Linea lineas[10];
+	Linea lineas[1000];
 };
 
