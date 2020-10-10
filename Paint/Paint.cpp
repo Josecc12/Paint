@@ -222,6 +222,14 @@ void Paint::ProcessEvent()
 				if (line_tool == true)
 				{
 					lineas[linea_counter].SetStartPoint(position_mouse.x, position_mouse.y);
+					linea_counter++;
+					lineas[linea_counter].ModColor(color_selected);
+					lineas[linea_counter].SetEndPoint(position_mouse.x, position_mouse.y);
+					lineas[linea_counter].SetHiden();
+					linea_counter++;
+					if (linea_counter == 10) {
+						linea_counter = 0;
+					}
 				}
 				if (circle_tool == true)
 				{
@@ -258,13 +266,13 @@ void Paint::ProcessEvent()
 				}
 				if (line_tool == true)
 				{
-					lineas[linea_counter].ModColor(color_selected);
+					/*lineas[linea_counter].ModColor(color_selected);
 					lineas[linea_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					lineas[linea_counter].SetHiden();
 					linea_counter++;
 					if (linea_counter == 10) {
 						linea_counter = 0;
-					}
+					}*/
 				}
 				if (circle_tool == true)
 				{

@@ -7,17 +7,19 @@ Linea::Linea() {
 	this->y2 = 0;
 	this->hiden = true;
 	this->linea[0] = Vertex(Vector2f( 120, 120));
-	this->linea[1] = Vertex(Vector2f( 240, 240));
+	this->linea[1] = Vertex(Vector2f( this->x2, this->y2));
 }
 
 void Linea::SetStartPoint(int x, int y) {
 	this->x1 = x;
 	this->y1 = y;
+	this->linea[0] = Vector2f(this->x1, this->y1);
 }
 
 void Linea::SetEndPoint(int x, int y) {
 	this->x2 = x;
 	this->y2 = y;
+	this->linea[1] = Vector2f(this->x2, this->y2);
 }
 
 void Linea::SetHiden() {
