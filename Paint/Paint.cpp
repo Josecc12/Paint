@@ -117,22 +117,15 @@ Paint::Paint(int x, int y)
 	}
 
 	//TOOL ARRAYS
-	for (int i = 0; i < 10; i++)
-	{
-		this->poligonos[i] = Poligono();
-		this->circulos[i] = Circulo();
-		this->lineas[i] = Linea();
-	}
 	for (int i = 0; i < 1000; i++)
 	{
 		this->pen[i] = CircleShape(45, 360);
 		this->pen[i].setOrigin(0, 0);
 		this->pen[i].setFillColor(Color::Black);
 		this->pen[i].setRadius(1);
-	}
-	for (int i = 0; i < 10; i++) {
-		this->circulos[i] = Circulo();
 		this->lineas[i] = Linea();
+		this->poligonos[i] = Poligono();
+		this->circulos[i] = Circulo();
 	}
 
 	PaintLoop();
@@ -140,26 +133,21 @@ Paint::Paint(int x, int y)
 
 void Paint::Draw()
 {
-	
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 1000; i++)
 	{
+		window->draw(pen[i]);
+		if (lineas[i].GetHiden() == false)
+		{
+			window->draw(lineas[i].linea, 2, Lines);
+		}
 		if (poligonos[i].GetHiden() == false)
 		{
 			window->draw(poligonos[i].GetPoligono());
 		}
-	}
-	for (int i = 0; i < 10; i++) {
-		if (circulos[i].GetHiden() == false) {
+		if (circulos[i].GetHiden() == false)
+		{
 			window->draw(circulos[i].GetCirculo());
 		}
-		if (lineas[i].GetHiden() == false) {
-			window->draw(lineas[i].linea, 2, Lines);
-		}
-	}
-	for (int i = 0; i < 1000; i++)
-	{
-		window->draw(pen[i]);
-
 	}
 	for (int i = 0; i < 6; i++)	
 	{
@@ -223,13 +211,11 @@ void Paint::ProcessEvent()
 				}
 				if (line_tool == true)
 				{
-					lineas[linea_counter].SetStartPoint(position_mouse.x, position_mouse.y);
-					linea_counter++;
 					lineas[linea_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					lineas[linea_counter].ModColor(color_selected);
 					lineas[linea_counter].SetHiden();
 					linea_counter++;
-					if (linea_counter == 10) {
+					if (linea_counter == 1000) {
 						linea_counter = 0;
 					}
 				}
@@ -257,7 +243,7 @@ void Paint::ProcessEvent()
 					poligonos[poligono_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					poligonos[poligono_counter].SetHiden();
 					poligono_counter++;
-					if (poligono_counter==10)
+					if (poligono_counter==1000)
 					{
 						poligono_counter = 0;
 					}	
@@ -276,7 +262,8 @@ void Paint::ProcessEvent()
 					circulos[circulo_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					circulos[circulo_counter].SetHiden();
 					circulo_counter++;
-					if (circulo_counter == 10) {
+					if (circulo_counter == 1000)
+					{
 						circulo_counter = 0;
 					}
 				}
@@ -494,9 +481,8 @@ void Paint::FillCollision()
 		{
 			poligonos[i].ModColor(color_selected);
 		}
-	}
-	for (int i = 0; i < 10; i++) {
-		if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse)) {
+		if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse))
+		{
 			circulos[i].ModColor(color_selected);
 		}
 	}

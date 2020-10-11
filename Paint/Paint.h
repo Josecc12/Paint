@@ -5,8 +5,8 @@
 #include <SFML/Graphics/Color.hpp>
 #include <string>
 #include "Poligono.h"
-#include "Circulo.h"
 #include "Linea.h"
+#include "Circulo.h"
 using namespace sf;
 using namespace std;
 class Paint
@@ -70,10 +70,10 @@ private:
 	Sprite* triangle_sprite;
 
 	//ARRAYS
-	Poligono poligonos[10];
+	Poligono poligonos[1000];
 	RectangleShape colors[20];
 	CircleShape pen[1000];
-	Circulo circulos[10];
 	Linea lineas[1000];
+	Circulo circulos[1000];
 };
 

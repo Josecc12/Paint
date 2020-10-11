@@ -1,12 +1,12 @@
 #include "Linea.h"
 
 Linea::Linea() {
-	this->x1 = 0;
+	this->x1 = 120;
 	this->x2 = 0;
-	this->y1 = 0;
+	this->y1 = 120;
 	this->y2 = 0;
 	this->hiden = true;
-	this->linea[0] = Vertex(Vector2f( this->x1, this->y2));
+	this->linea[0] = Vertex(Vector2f( this->x1, this->y1));
 	this->linea[1] = Vertex(Vector2f( this->x2, this->y2));
 }
 
