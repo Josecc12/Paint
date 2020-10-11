@@ -60,3 +60,21 @@ CircleShape Triangulo::GetTriangulo()
 
 	return triangulo;
 }
+
+string Triangulo::GetInfo() {
+
+	string info = "";
+	int distancia=0;
+	distancia = sqrt((pow(x2 - x1, 2) + pow(y2 - y1, 2)));
+	int area=0;
+	int altura = 0;
+	altura=(sqrt(3) * distancia) / 2;
+	area = distancia*altura*(0.5);
+	
+	info = "Tipo de Objeto: Triangulo \nPosicicion:" + to_string(triangulo.getPosition().x) + "," + to_string(triangulo.getPosition().y)+ '\n'+
+		"Altura: " + to_string(altura) + '\n' +
+		"Base: " + to_string(distancia) + '\n' +
+		"Area: " + to_string(area);
+
+		return info;
+}

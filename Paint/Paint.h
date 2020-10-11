@@ -6,6 +6,7 @@
 #include <string>
 #include "Poligono.h"
 #include "Triangulo.h"
+#include <stdlib.h>
 using namespace sf;
 using namespace std;
 class Paint

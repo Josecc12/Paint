@@ -19,6 +19,7 @@ public:
 	bool GetHiden();
 	void ModPosition(int x, int y);
 	CircleShape GetTriangulo();
+	string GetInfo();
 private:
 	int x1, x2;
 	int y1, y2;

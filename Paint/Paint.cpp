@@ -263,6 +263,12 @@ void Paint::ProcessEvent()
 					triangulo[triangle_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					triangulo[triangle_counter].SetHiden();
 					triangle_counter++;
+					system("cls");
+					for (int i = 0; i < triangle_counter; i++) {
+
+						cout << triangulo[i].GetInfo() << endl << endl;
+					}
+
 					if (triangle_counter == 10)
 					{
 						triangle_counter = 0;
