@@ -4,7 +4,9 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/Color.hpp>
 #include <string>
+#include <stdlib.h>
 #include "Poligono.h"
+#include "Triangulo.h"
 #include "Rectangulo.h"
 #include "Circulo.h"
 using namespace sf;
@@ -27,6 +29,7 @@ private:
 	int fps;
 	int pen_radius;
 	int poligono_counter;
+	int triangle_counter;
 	int rectangulo_counter;
 	int circulo_counter;
 	int pen_counter;
@@ -74,6 +77,8 @@ private:
 	Poligono poligonos[10];
 	RectangleShape colors[20];
 	CircleShape pen[1000];
+	Triangulo triangulo[10];
 	Rectangulo rectangulos[10];
 	Circulo circulos[10];
+
 };

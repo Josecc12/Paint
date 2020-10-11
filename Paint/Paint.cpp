@@ -1,4 +1,5 @@
 #include "Paint.h"
+#include "Triangulo.h"
 Paint::Paint(int x, int y)
 {
 	
@@ -6,6 +7,7 @@ Paint::Paint(int x, int y)
 	this->prueba = CircleShape(45);
 	prueba.setPosition(45, 45);
 	this->poligono_counter=0;
+	this->triangle_counter = 0;
 	this->rectangulo_counter=0;
 	this->circulo_counter = 0;
 	this->pen_counter = 0;
@@ -123,6 +125,7 @@ Paint::Paint(int x, int y)
 	for (int i = 0; i < 10; i++)
 	{
 		this->poligonos[i] = Poligono();
+		this->triangulo[i] = Triangulo();
 		this->rectangulos[i] = Rectangulo();
 		this->circulos[i] = Circulo();
 	}
@@ -145,11 +148,6 @@ void Paint::Draw()
 	{
 		if (poligonos[i].GetHiden() == false) {
 			window->draw(poligonos[i].GetPoligono());
-<<<<<<< HEAD
-			
-			
-=======
->>>>>>> 4565fae911e1a00fd5f44d05e69b6dbc952d5039
 		}
 		if (rectangulos[i].GetHiden() == false) {
 			window->draw(rectangulos[i].GetRectangulo());
@@ -158,6 +156,10 @@ void Paint::Draw()
 		}
 		if (circulos[i].GetHiden() == false) {
 			window->draw(circulos[i].GetCirculo());
+		}
+		if (triangulo[i].GetHiden() == false) {
+
+			window->draw(triangulo[i].GetTriangulo());
 		}
 	}
 	for (int i = 0; i < 1000; i++)
@@ -236,7 +238,7 @@ void Paint::ProcessEvent()
 				}
 				if (triangle_tool == true)
 				{
-
+					triangulo[triangle_counter].SetStartPoint(position_mouse.x, position_mouse.y);
 				}
 				if (fill_tool==true)
 				{
@@ -291,7 +293,20 @@ void Paint::ProcessEvent()
 				}
 				if (triangle_tool == true)
 				{
+					
+					triangulo[triangle_counter].SetEndPoint(position_mouse.x, position_mouse.y);
+					triangulo[triangle_counter].SetHiden();
+					triangle_counter++;
+					system("cls");
+					for (int i = 0; i < triangle_counter; i++) {
 
+						cout << triangulo[i].GetInfo() << endl << endl;
+					}
+
+					if (triangle_counter == 10)
+					{
+						triangle_counter = 0;
+					}
 				}
 			}
 			break;
@@ -539,6 +554,9 @@ void Paint::FillCollision()
 		{
 			poligonos[i].ModColor(color_selected);
 		}
+		if (triangulo[i].GetTriangulo().getGlobalBounds().intersects(boxmouse))
+		{
+			triangulo[i].ModColor(color_selected);
 		if (rectangulos[i].GetRectangulo().getGlobalBounds().intersects(boxmouse))
 		{
 			rectangulos[i].ModColor(color_selected);
@@ -565,6 +583,10 @@ void Paint::SelectorCollision()
 			if (poligonos[i].GetPoligono().getGlobalBounds().intersects(boxmouse))
 			{
 				poligonos[i].ModPosition(position_mouse.x, position_mouse.y);
+			}
+			if (triangulo[i].GetTriangulo().getGlobalBounds().intersects(boxmouse))
+			{
+				triangulo[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
 			/*
 			if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse))

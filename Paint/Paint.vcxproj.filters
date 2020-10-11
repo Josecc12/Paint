@@ -24,6 +24,7 @@
     <ClCompile Include="Poligono.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Triangulo.cpp">
     <ClCompile Include="Linea.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -41,6 +42,7 @@
     <ClInclude Include="Poligono.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Triangulo.h">
     <ClInclude Include="Linea.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>

@@ -150,12 +150,14 @@
     <ClCompile Include="Poligono.cpp" />
     <ClCompile Include="Rectangulo.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Triangulo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circulo.h" />
     <ClInclude Include="Linea.h" />
     <ClInclude Include="Paint.h" />
     <ClInclude Include="Poligono.h" />
+    <ClInclude Include="Triangulo.h" />
     <ClInclude Include="Rectangulo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
