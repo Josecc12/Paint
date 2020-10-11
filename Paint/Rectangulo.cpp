@@ -8,6 +8,7 @@ Rectangulo::Rectangulo() {
 	this->hiden=true;
 	this->rectangulo.setOutlineColor(Color::White);
 	this->rectangulo.setFillColor(Color::Black);
+	
 }
 void Rectangulo::SetStartPoint(int x, int y)
 {
@@ -24,12 +25,12 @@ void Rectangulo::SetEndPoint(int x, int y)
 	
 
 }
-float Rectangulo::GetHeight() {
+int Rectangulo::GetHeight() {
 	float altura;
 	altura = y2 - y1;
 	return altura;
 }
-float Rectangulo::GetWidth() {
+int Rectangulo::GetWidth() {
 	float ancho;
 	ancho = x2 - x1;
 	return ancho;
@@ -54,4 +55,16 @@ void Rectangulo::ModColor(Color a)
 void Rectangulo::ModPosition(int x, int y)
 {
 	rectangulo.setPosition(x, y);
+}
+string Rectangulo::GetInfo() {
+	string info=" ";
+	int area = 0;
+	area = GetHeight() * GetWidth();
+	info = "Tipo de Objeto:Rectangulo  \nPoscision: " + to_string(rectangulo.getPosition().x) + "," + to_string(rectangulo.getPosition().y) + '\n' +
+		"Alto: " + to_string(GetHeight()) + '\n' +
+		"Ancho: " + to_string(GetWidth()) + '\n' +
+		"Area: " + to_string(area);
+	//" Color:" +rectangulo.getFillColor() + " color de borde: " + rectangulo.getOutlineColor() + '\n';
+	
+		return info;
 }

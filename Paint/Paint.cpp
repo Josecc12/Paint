@@ -143,10 +143,13 @@ void Paint::Draw()
 		{
 			window->draw(poligonos[i].GetPoligono());
 			
+			
 		}
 		if (rectangulos[i].GetHiden() == false)
 		{
 			window->draw(rectangulos[i].GetRectangulo());
+			
+			
 		}
 	}
 	for (int i = 0; i < 1000; i++)
@@ -178,6 +181,7 @@ void Paint::PaintLoop()
 		*tiempo = reloj->getElapsedTime();
 		if (tiempo->asSeconds() > 1 / fps)
 		{
+			
 			ProcessMouse();
 			ProcessEvent();
 			Draw();
@@ -253,6 +257,11 @@ void Paint::ProcessEvent()
 					rectangulos[rectangulo_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					rectangulos[rectangulo_counter].SetHiden();
 					rectangulo_counter++;
+					system("cls");
+					for (int i = 0; i < rectangulo_counter; i++) {
+						
+						cout << rectangulos[i].GetInfo() << endl<<endl;
+					}
 					if (rectangulo_counter==10)
 					{
 						rectangulo_counter = 0;
