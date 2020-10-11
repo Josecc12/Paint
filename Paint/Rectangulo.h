@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <math.h>
+#include <string>
 using namespace std;
 using namespace sf;
 class Rectangulo
@@ -15,8 +16,9 @@ public:
 	void SetHiden();
 	bool GetHiden();
 	void ModColor(Color a);
-	float GetHeight();
-	float GetWidth();
+	int GetHeight();
+	int GetWidth();
+	string GetInfo();
 	RectangleShape GetRectangulo();
 
 
