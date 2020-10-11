@@ -512,13 +512,10 @@ void Paint::SelectorCollision()
 			{
 				poligonos[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
-		}
-		for (int i = 0; i < 10; i++) {
-			if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse)) {
+			if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse))
+			{
 				circulos[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
-			/*if (lineas[i]..getGlobalBounds().intersects(boxmouse)) {
-				lineas[i].ModPosition(position_mouse.x, position_mouse.y);
-			}*/
 		}
 }
+	
