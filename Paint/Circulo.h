@@ -1,11 +1,10 @@
 #pragma once
-#include <iostream>
+#include<iostream>
 #include <SFML/Graphics.hpp>
-#include <SFML/Window/Event.hpp>
-
+#include <SFML/Graphics/CircleShape.hpp>
+#include <math.h>
 using namespace std;
 using namespace sf;
-
 class Circulo
 {
 public:
@@ -21,8 +20,6 @@ public:
 private:
 	int x1, x2;
 	int y1, y2;
-	int lados;
 	bool hiden;
 	CircleShape circulo;
 };
-

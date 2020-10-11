@@ -26,8 +26,6 @@ private:
 	int lados;
 	int xo1, yo1;
 	bool hiden;
-	CircleShape poligono;
-
-	
+	CircleShape poligono;	
 };
 

@@ -124,6 +124,7 @@ Paint::Paint(int x, int y)
 	{
 		this->poligonos[i] = Poligono();
 		this->rectangulos[i] = Rectangulo();
+		this->circulos[i] = Circulo();
 	}
 	for (int i = 0; i < 1000; i++)
 	{
@@ -133,9 +134,6 @@ Paint::Paint(int x, int y)
 		this->pen[i].setRadius(1);
 	}
 
-	for (int i = 0; i < 10; i++) {
-		this->circulos[i] = Circulo();
-	}
 
 	PaintLoop();
 }
@@ -283,6 +281,7 @@ void Paint::ProcessEvent()
 
 				}
 			}
+			break;
 
 		case Event::MouseMoved:
 
@@ -544,23 +543,22 @@ void Paint::SelectorCollision()
 	FloatRect boxmouse(Vector2f(position_mouse), { 10,10 });
 		for (int i = 0; i < 10; i++)
 		{
-		
+			
 			if (rectangulos[i].GetRectangulo().getGlobalBounds().intersects(boxmouse))
 			{
 				rectangulos[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
-			if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse))
-			{
-				circulos[i].ModPosition(position_mouse.x, position_mouse.y);
-			}
-		}
-		for (int i = 0; i < 10; i++)
-		{
+
 			if (poligonos[i].GetPoligono().getGlobalBounds().intersects(boxmouse))
 			{
 				poligonos[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
-
+			/*
+			if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse))
+			{
+				circulos[i].ModPosition(position_mouse.x, position_mouse.y);
+			}
+			*/
 		}
 		
 }
