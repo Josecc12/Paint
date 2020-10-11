@@ -9,6 +9,7 @@ using namespace sf;
 int main()
 {
 	Paint* paint1;
-	paint1 = new Paint(800,600);
+	//x,y
+	paint1 = new Paint(1000,600);
 	return 0;
 }
