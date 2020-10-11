@@ -23,6 +23,7 @@ public:
 	void SelectorCollision();
 
 private:	
+	CircleShape prueba;
 	int fps;
 	int pen_radius;
 	int poligono_counter;

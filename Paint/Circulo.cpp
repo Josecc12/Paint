@@ -7,7 +7,8 @@ Circulo::Circulo() {
 	this->y2 = 0;
 	this->lados = 360;
 	this->circulo = CircleShape();
-	circulo.setOutlineColor(Color::Yellow);
+	circulo.setOutlineColor(Color::White);
+	circulo.setFillColor(Color::Black);
 }
 
 void Circulo::SetStartPoint(int x, int y){

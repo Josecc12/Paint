@@ -3,6 +3,8 @@ Paint::Paint(int x, int y)
 {
 	
 	this->fps = 60; 
+	this->prueba = CircleShape(45);
+	prueba.setPosition(45, 45);
 	this->poligono_counter=0;
 	this->rectangulo_counter=0;
 	this->circulo_counter = 0;
@@ -16,7 +18,7 @@ Paint::Paint(int x, int y)
 	window = new RenderWindow(VideoMode(x, y), "PAINT");
 	window->setFramerateLimit(this->fps);
 	this->event1 = new Event;
-
+	
 	//TOOLS
 	this->pen_tool = false;
 	this->fill_tool = false;
@@ -111,7 +113,8 @@ Paint::Paint(int x, int y)
 	this->colors[3].setFillColor(Color::Cyan);
 	this->colors[4].setFillColor(Color::Yellow);
 	this->colors[5].setFillColor(Color::White);
-	for (int i = 0; i < 6; i++)
+	this->colors[6].setFillColor(Color::Magenta);
+	for (int i = 0; i < 7; i++)
 	{
 		this->colors[i].setPosition(0,70 * i);
 	}
@@ -157,7 +160,7 @@ void Paint::Draw()
 		window->draw(pen[i]);
 
 	}
-	for (int i = 0; i < 6; i++)	
+	for (int i = 0; i < 7; i++)	
 	{
 		window->draw(colors[i]);
 	}
@@ -241,7 +244,7 @@ void Paint::ProcessEvent()
 			{
 				if (poligon_tool == true)
 				{
-					poligonos[poligono_counter].ModColor(color_selected);
+					
 					poligonos[poligono_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					poligonos[poligono_counter].SetHiden();
 					poligono_counter++;
@@ -267,7 +270,7 @@ void Paint::ProcessEvent()
 				}
 				if (circle_tool == true)
 				{
-					circulos[circulo_counter].ModColor(color_selected);
+					
 					circulos[circulo_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					circulos[circulo_counter].SetHiden();
 					circulo_counter++;
@@ -309,12 +312,43 @@ void Paint::ProcessEvent()
 						pen_counter = 0;
 					}
 				}
-
 				if (selector_tool == true)
 				{
-					
-						SelectorCollision();
-					
+
+					SelectorCollision();
+
+				}
+
+			
+			}
+		
+			
+			break;
+
+		case Event::EventType::KeyPressed:
+
+			if (pen_tool==true)
+			{
+				if (Keyboard::Up == event1->key.code)
+				{
+					pen_radius++;
+				}
+				if (Keyboard::Down == event1->key.code)
+				{
+					pen_radius--;
+				}
+			}
+			if (poligon_tool==true)
+			{
+				if (Keyboard::Up == event1->key.code)
+				{
+					poligonos[poligono_counter].AumentarLados();
+					cout << "Lados del poligono:" << poligonos[poligono_counter].GetLados() << endl;
+				}
+				if (Keyboard::Down == event1->key.code)
+				{
+					poligonos[poligono_counter].DisminuirLados();
+					cout << "Lados del poligono:" << poligonos[poligono_counter].GetLados()<<endl;
 				}
 			}
 			
@@ -477,6 +511,10 @@ void Paint::ColorCollision()
 	{
 		color_selected = Color::White;
 	}
+	if (colors[6].getGlobalBounds().intersects(boxmouse))
+	{
+		color_selected = Color::Magenta;
+	}
 }
 
 
@@ -506,10 +544,7 @@ void Paint::SelectorCollision()
 	FloatRect boxmouse(Vector2f(position_mouse), { 10,10 });
 		for (int i = 0; i < 10; i++)
 		{
-			if (poligonos[i].GetPoligono().getGlobalBounds().intersects(boxmouse))
-			{
-				poligonos[i].ModPosition(position_mouse.x, position_mouse.y);
-			}
+		
 			if (rectangulos[i].GetRectangulo().getGlobalBounds().intersects(boxmouse))
 			{
 				rectangulos[i].ModPosition(position_mouse.x, position_mouse.y);
@@ -518,6 +553,14 @@ void Paint::SelectorCollision()
 			{
 				circulos[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			if (poligonos[i].GetPoligono().getGlobalBounds().intersects(boxmouse))
+			{
+				poligonos[i].ModPosition(position_mouse.x, position_mouse.y);
+			}
+
 		}
 		
 }
