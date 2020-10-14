@@ -5,10 +5,12 @@
 #include <math.h>
 using namespace std;
 using namespace sf;
-class Circulo
+
+class Triangulo
+
 {
 public:
-	Circulo();
+	Triangulo();
 	void SetStartPoint(int x, int y);
 	void SetEndPoint(int x, int y);
 	void SetHiden();
@@ -16,10 +18,14 @@ public:
 	int GetDistance();
 	bool GetHiden();
 	void ModPosition(int x, int y);
-	CircleShape GetCirculo();
+	CircleShape GetTriangulo();
+	string GetInfo();
 private:
 	int x1, x2;
 	int y1, y2;
-	bool hiden;
-	CircleShape circulo;
+	int lados;
+	bool hiden = true;
+	CircleShape triangulo;
+
 };
+

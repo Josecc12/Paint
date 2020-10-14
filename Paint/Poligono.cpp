@@ -7,9 +7,11 @@ Poligono::Poligono()
 	this->y2 = 0;
 	this->xo1 = 0;
 	this->yo1 = 0;
-	this->lados = 4;
+	this->lados = 360;
+	this->hiden = true;
 	this->poligono = CircleShape(1, 1);
-	poligono.setOutlineColor(Color::Yellow);
+	this->poligono.setFillColor(Color::Black);
+	poligono.setOutlineColor(Color::White);
 }
 
 void Poligono::SetStartPoint(int x, int y)
@@ -27,6 +29,22 @@ void Poligono::SetEndPoint(int x, int y)
 	this ->y2 = y;
 	this->poligono.setPosition(this->x1, this->y1);
 
+}
+
+void Poligono::AumentarLados()
+{
+	if (lados>3)
+	{
+		this->lados++;
+	}
+}
+
+void Poligono::DisminuirLados()
+{
+	if (lados>3)
+	{
+		this->lados--;
+	}
 }
 
 void Poligono::SetHiden()
@@ -54,6 +72,11 @@ int Poligono::GetDistance()
 bool Poligono::GetHiden()
 {
 	return this->hiden;
+}
+
+int Poligono::GetLados()
+{
+	return this->lados;
 }
 
 CircleShape Poligono::GetPoligono()
