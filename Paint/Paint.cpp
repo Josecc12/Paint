@@ -10,6 +10,7 @@ Paint::Paint(int x, int y)
 	this->triangle_counter = 0;
 	this->rectangulo_counter=0;
 	this->circulo_counter = 0;
+	this->linea_counter = 0;
 	this->pen_counter = 0;
 	this->pen_radius=15;
 	this->reloj = new Clock;
@@ -122,12 +123,14 @@ Paint::Paint(int x, int y)
 	}
 
 	//TOOL ARRAYS
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		this->poligonos[i] = Poligono();
 		this->triangulo[i] = Triangulo();
 		this->rectangulos[i] = Rectangulo();
 		this->circulos[i] = Circulo();
+		this->lineas[i] = Linea();
+
 	}
 	for (int i = 0; i < 1000; i++)
 	{
@@ -137,14 +140,12 @@ Paint::Paint(int x, int y)
 		this->pen[i].setRadius(1);
 	}
 
-
 	PaintLoop();
 }
 
 void Paint::Draw()
 {
-	
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		if (poligonos[i].GetHiden() == false) {
 			window->draw(poligonos[i].GetPoligono());
@@ -159,11 +160,13 @@ void Paint::Draw()
 
 			window->draw(triangulo[i].GetTriangulo());
 		}
+		if (lineas[i].GetHiden() == false) {
+			window->draw(lineas[i].linea, 2, Lines);
+		}
 	}
 	for (int i = 0; i < 1000; i++)
 	{
 		window->draw(pen[i]);
-
 	}
 	for (int i = 0; i < 7; i++)	
 	{
@@ -228,7 +231,18 @@ void Paint::ProcessEvent()
 				}
 				if (line_tool == true)
 				{
-
+					lineas[linea_counter].SetEndPoint(position_mouse.x, position_mouse.y);
+					lineas[linea_counter].ModColor(color_selected);
+					lineas[linea_counter].SetHiden();
+					linea_counter++;
+					for (int i = 0; i < linea_counter; i++)
+					{
+						cout << lineas[i].GetInfo() << endl << endl;
+					}
+					if (linea_counter == 100) 
+					{
+						linea_counter = 0;
+					}
 				}
 				if (circle_tool == true)
 				{
@@ -254,7 +268,7 @@ void Paint::ProcessEvent()
 					poligonos[poligono_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					poligonos[poligono_counter].SetHiden();
 					poligono_counter++;
-					if (poligono_counter==10)
+					if (poligono_counter==100)
 					{
 						poligono_counter = 0;
 					}	
@@ -265,19 +279,14 @@ void Paint::ProcessEvent()
 					rectangulos[rectangulo_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					rectangulos[rectangulo_counter].SetHiden();
 					rectangulo_counter++;
-					system("cls");
-					for (int i = 0; i < rectangulo_counter; i++) {
-						
+					for (int i = 0; i < rectangulo_counter; i++) 
+					{
 						cout << rectangulos[i].GetInfo() << endl<<endl;
 					}
-					if (rectangulo_counter==10)
+					if (rectangulo_counter==100)
 					{
 						rectangulo_counter = 0;
 					}
-				}
-				if (line_tool == true)
-				{
-
 				}
 				if (circle_tool == true)
 				{
@@ -285,7 +294,12 @@ void Paint::ProcessEvent()
 					circulos[circulo_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					circulos[circulo_counter].SetHiden();
 					circulo_counter++;
-					if (circulo_counter == 10) {
+					for (int i = 0; i < circulo_counter; i++)
+					{
+						cout << circulos[i].GetInfo() << endl << endl;
+					}
+					if (circulo_counter == 100)
+					{
 						circulo_counter = 0;
 					}
 				}
@@ -295,13 +309,11 @@ void Paint::ProcessEvent()
 					triangulo[triangle_counter].SetEndPoint(position_mouse.x, position_mouse.y);
 					triangulo[triangle_counter].SetHiden();
 					triangle_counter++;
-					system("cls");
-					for (int i = 0; i < triangle_counter; i++) {
-
+					for (int i = 0; i < triangle_counter; i++) 
+					{
 						cout << triangulo[i].GetInfo() << endl << endl;
 					}
-
-					if (triangle_counter == 10)
+					if (triangle_counter == 100)
 					{
 						triangle_counter = 0;
 					}
@@ -578,7 +590,6 @@ void Paint::SelectorCollision()
 			{
 				rectangulos[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
-
 			if (poligonos[i].GetPoligono().getGlobalBounds().intersects(boxmouse))
 			{
 				poligonos[i].ModPosition(position_mouse.x, position_mouse.y);
@@ -587,13 +598,11 @@ void Paint::SelectorCollision()
 			{
 				triangulo[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
-			/*
-			if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse))
+			/*if (circulos[i].GetCirculo().getGlobalBounds().intersects(boxmouse))
 			{
 				circulos[i].ModPosition(position_mouse.x, position_mouse.y);
-			}
-			*/
-			
+			}*/
 		}
 		
 }
+	

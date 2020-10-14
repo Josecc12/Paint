@@ -6,6 +6,7 @@
 #include <string>
 #include <stdlib.h>
 #include "Poligono.h"
+#include "Linea.h"
 #include "Triangulo.h"
 #include "Rectangulo.h"
 #include "Circulo.h"
@@ -32,6 +33,7 @@ private:
 	int triangle_counter;
 	int rectangulo_counter;
 	int circulo_counter;
+	int linea_counter;
 	int pen_counter;
 	bool pen_tool;
 	bool fill_tool;
@@ -74,11 +76,12 @@ private:
 	Sprite* triangle_sprite;
 
 	//ARRAYS
-	Poligono poligonos[10];
+	Poligono poligonos[100];
 	RectangleShape colors[20];
 	CircleShape pen[1000];
-	Triangulo triangulo[10];
-	Rectangulo rectangulos[10];
-	Circulo circulos[10];
+	Triangulo triangulo[100];
+	Rectangulo rectangulos[100];
+	Circulo circulos[100];
+	Linea lineas[100];
 
 };

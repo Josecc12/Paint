@@ -16,7 +16,6 @@ void Circulo::SetStartPoint(int x, int y)
 {
 	this->x1 = x;
 	this->y1 = y;
-
 }
 
 void Circulo::SetEndPoint(int x, int y)
@@ -24,9 +23,7 @@ void Circulo::SetEndPoint(int x, int y)
 	this->x2 = x;
 	this->y2 = y;
 	this->circulo.setPosition(this->x1, this->y1);
-
 }
-
 
 void Circulo::SetHiden()
 {
@@ -55,6 +52,17 @@ bool Circulo::GetHiden()
 	return this->hiden;
 }
 
+string Circulo::GetInfo() 
+{
+	string info = " ";
+	float area = 0;
+	area = (3.1416) * (pow((GetDistance()/2), 2));
+	info += "Tipo de Objeto: Circulo \nPosicicion:" + to_string(circulo.getPosition().x) + "," + to_string(circulo.getPosition().y) + '\n';
+	info += "Radio: " + to_string(GetDistance() / 2) = '\n';
+	info +=	"Area: " + to_string(area);
+	
+	return info;
+}
 
 CircleShape Circulo::GetCirculo()
 {

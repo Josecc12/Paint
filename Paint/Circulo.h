@@ -16,6 +16,7 @@ public:
 	int GetDistance();
 	bool GetHiden();
 	void ModPosition(int x, int y);
+	string GetInfo();
 	CircleShape GetCirculo();
 private:
 	int x1, x2;
