@@ -7,7 +7,7 @@ Poligono::Poligono()
 	this->y2 = 0;
 	this->xo1 = 0;
 	this->yo1 = 0;
-	this->lados = 4;
+	this->lados = 360;
 	this->hiden = true;
 	this->poligono = CircleShape(1, 1);
 	this->poligono.setFillColor(Color::Black);

@@ -25,6 +25,8 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="Triangulo.cpp">
+		<Filter>Archivos de origen</Filter>
+    </ClCompile>
     <ClCompile Include="Linea.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -43,6 +45,8 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Triangulo.h">
+		<Filter>Archivos de encabezado</Filter>
+	</ClInclude>	
     <ClInclude Include="Linea.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>

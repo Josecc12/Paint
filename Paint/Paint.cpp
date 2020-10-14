@@ -150,9 +150,7 @@ void Paint::Draw()
 			window->draw(poligonos[i].GetPoligono());
 		}
 		if (rectangulos[i].GetHiden() == false) {
-			window->draw(rectangulos[i].GetRectangulo());
-			
-			
+			window->draw(rectangulos[i].GetRectangulo());	
 		}
 		if (circulos[i].GetHiden() == false) {
 			window->draw(circulos[i].GetCirculo());
@@ -557,6 +555,7 @@ void Paint::FillCollision()
 		if (triangulo[i].GetTriangulo().getGlobalBounds().intersects(boxmouse))
 		{
 			triangulo[i].ModColor(color_selected);
+		}
 		if (rectangulos[i].GetRectangulo().getGlobalBounds().intersects(boxmouse))
 		{
 			rectangulos[i].ModColor(color_selected);
@@ -594,6 +593,7 @@ void Paint::SelectorCollision()
 				circulos[i].ModPosition(position_mouse.x, position_mouse.y);
 			}
 			*/
+			
 		}
 		
 }

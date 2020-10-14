@@ -6,7 +6,7 @@ Circulo::Circulo()
 	this->y1 = 0;
 	this->y2 = 0;
 	this->hiden = true;
-	this->circulo = CircleShape(1, 1);
+	this->circulo = CircleShape();
 	this->circulo.setFillColor(Color::Black);
 	circulo.setOutlineColor(Color::White);
 	circulo.setPointCount(360);
