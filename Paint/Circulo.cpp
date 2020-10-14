@@ -1,24 +1,21 @@
 #include "Circulo.h"
-Circulo::Circulo() 
+Circulo::Circulo()
 {
 	this->x1 = 0;
 	this->x2 = 0;
 	this->y1 = 0;
 	this->y2 = 0;
-	this->xo1 = 0;
-	this->yo1 = 0;
-	this->lados = 360;
-	this->circulo = CircleShape(1, 1);
-	circulo.setOutlineColor(Color::Yellow);
+	this->hiden = true;
+	this->circulo = CircleShape();
+	this->circulo.setFillColor(Color::Black);
+	circulo.setOutlineColor(Color::White);
+	circulo.setPointCount(360);
 }
 
 void Circulo::SetStartPoint(int x, int y)
 {
 	this->x1 = x;
 	this->y1 = y;
-	this->xo1 = x;
-	this->yo1 = y;
-
 }
 
 void Circulo::SetEndPoint(int x, int y)
@@ -26,7 +23,6 @@ void Circulo::SetEndPoint(int x, int y)
 	this->x2 = x;
 	this->y2 = y;
 	this->circulo.setPosition(this->x1, this->y1);
-
 }
 
 void Circulo::SetHiden()
@@ -56,11 +52,21 @@ bool Circulo::GetHiden()
 	return this->hiden;
 }
 
+string Circulo::GetInfo() 
+{
+	string info = " ";
+	float area = 0;
+	area = (3.1416) * (pow((GetDistance()/2), 2));
+	info += "Tipo de Objeto: Circulo \nPosicicion:" + to_string(circulo.getPosition().x) + "," + to_string(circulo.getPosition().y) + '\n';
+	info += "Radio: " + to_string(GetDistance() / 2) = '\n';
+	info +=	"Area: " + to_string(area);
+	
+	return info;
+}
+
 CircleShape Circulo::GetCirculo()
 {
 	circulo.setOutlineThickness(2);
 	circulo.setRadius(GetDistance() / 2);
-	circulo.setPointCount(lados);
-
 	return circulo;
 }

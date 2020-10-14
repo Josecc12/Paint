@@ -48,3 +48,12 @@ bool Linea::GetHiden()
 {
 	return this->hiden;
 }
+
+string Linea::GetInfo()
+{
+	string info = "";
+	info += "Tipo de Objeto: Linea \nPosicicion:" + to_string(linea->position.x) + "," + to_string(linea->position.y) + '\n';
+	info += "Longitud: " + to_string(GetDistance());
+
+	return info;
+}

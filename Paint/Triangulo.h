@@ -1,20 +1,16 @@
 #pragma once
-#include <iostream>
+#include<iostream>
 #include <SFML/Graphics.hpp>
-#include <SFML/Window/Event.hpp>
-
+#include <SFML/Graphics/CircleShape.hpp>
+#include <math.h>
 using namespace std;
 using namespace sf;
 
-class Linea
-{
-private:
-	int x1, x2;
-	int y1, y2;
-	bool hiden;
+class Triangulo
 
+{
 public:
-	Linea();
+	Triangulo();
 	void SetStartPoint(int x, int y);
 	void SetEndPoint(int x, int y);
 	void SetHiden();
@@ -22,7 +18,14 @@ public:
 	int GetDistance();
 	bool GetHiden();
 	void ModPosition(int x, int y);
+	CircleShape GetTriangulo();
 	string GetInfo();
-	Vertex linea[2];
+private:
+	int x1, x2;
+	int y1, y2;
+	int lados;
+	bool hiden = true;
+	CircleShape triangulo;
+
 };
 

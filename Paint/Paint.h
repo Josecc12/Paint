@@ -4,8 +4,11 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/Color.hpp>
 #include <string>
+#include <stdlib.h>
 #include "Poligono.h"
 #include "Linea.h"
+#include "Triangulo.h"
+#include "Rectangulo.h"
 #include "Circulo.h"
 using namespace sf;
 using namespace std;
@@ -23,9 +26,12 @@ public:
 	void SelectorCollision();
 
 private:	
+	CircleShape prueba;
 	int fps;
 	int pen_radius;
 	int poligono_counter;
+	int triangle_counter;
+	int rectangulo_counter;
 	int circulo_counter;
 	int linea_counter;
 	int pen_counter;
@@ -72,8 +78,10 @@ private:
 	//ARRAYS
 	Poligono poligonos[100];
 	RectangleShape colors[20];
-	CircleShape pen[100];
-	Linea lineas[100];
+	CircleShape pen[1000];
+	Triangulo triangulo[100];
+	Rectangulo rectangulos[100];
 	Circulo circulos[100];
-};
+	Linea lineas[100];
 
+};
