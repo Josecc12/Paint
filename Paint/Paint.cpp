@@ -123,6 +123,9 @@ Paint::Paint(int x, int y)
 		this->pen[i].setOrigin(0, 0);
 		this->pen[i].setFillColor(Color::Black);
 		this->pen[i].setRadius(1);
+	}
+	for (int i = 0; i < 100; i++)
+	{
 		this->lineas[i] = Linea();
 		this->poligonos[i] = Poligono();
 		this->circulos[i] = Circulo();
@@ -136,18 +139,6 @@ void Paint::Draw()
 	for (int i = 0; i < 1000; i++)
 	{
 		window->draw(pen[i]);
-		if (lineas[i].GetHiden() == false)
-		{
-			window->draw(lineas[i].linea, 2, Lines);
-		}
-		if (poligonos[i].GetHiden() == false)
-		{
-			window->draw(poligonos[i].GetPoligono());
-		}
-		if (circulos[i].GetHiden() == false)
-		{
-			window->draw(circulos[i].GetCirculo());
-		}
 	}
 	for (int i = 0; i < 6; i++)	
 	{

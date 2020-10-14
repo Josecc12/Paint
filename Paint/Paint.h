@@ -70,10 +70,10 @@ private:
 	Sprite* triangle_sprite;
 
 	//ARRAYS
-	Poligono poligonos[1000];
+	Poligono poligonos[100];
 	RectangleShape colors[20];
-	CircleShape pen[1000];
-	Linea lineas[1000];
-	Circulo circulos[1000];
+	CircleShape pen[100];
+	Linea lineas[100];
+	Circulo circulos[100];
 };
 
