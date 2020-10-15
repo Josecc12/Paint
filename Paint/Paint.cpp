@@ -139,8 +139,6 @@ Paint::Paint(int x, int y)
 		this->pen[i].setFillColor(Color::Black);
 		this->pen[i].setRadius(1);
 	}
-
-	PaintLoop();
 }
 
 void Paint::Draw()

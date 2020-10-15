@@ -11,5 +11,6 @@ int main()
 	Paint* paint1;
 	//x,y
 	paint1 = new Paint(1000,600);
+	paint1->PaintLoop();
 	return 0;
 }
